@@ -1,4 +1,14 @@
 # matterport-dl
+
+> **Note:** This is a temporary fork of [rebane2001/matterport-dl](https://github.com/rebane2001/matterport-dl). All credit goes to [@rebane2001](https://github.com/rebane2001) and [@mitchcapper](https://github.com/mitchcapper) for building and maintaining this amazing tool. This fork only exists to carry a few fixes until they are merged upstream via [PR #198](https://github.com/rebane2001/matterport-dl/pull/198). Once that PR is merged, please use the original repo instead.
+>
+> **Fixes in this fork:**
+> - Downloaded models no longer break after ~24 hours (token expiry fix for embedded HTML preload data)
+> - Showcase loading no longer gets stuck (adds new GraphQL operations `GetModelAssets`, `GetSweeps`, `GetLayers` and updates stale persisted query hashes that Matterport has changed)
+> - Missing images like `atlas.png` and `logo-white.svg` are now downloaded (these are required by the three.js renderer)
+> - HTTP 429 rate-limited downloads are now retried with exponential backoff instead of silently failing (previously caused thousands of panorama tiles to be missing)
+> - The local server now properly serves `.modified.json` files and returns valid responses for unknown graph operations
+
 A tool to download/archive [Matterport](https://matterport.com) digital twin virtual tours.  Supports most matterport virtual tour links ( ie https://my.matterport.com/show/?m=roWLLMMmPL8 ). This project is not in any way associated with or supported by Matterport Inc in any way all relevant trademarks and rights are reserve Matterport Inc.
 
 Currently matterport-dl is primarily maintained by [@mitchcapper](https://github.com/mitchcapper).
